@@ -1,4 +1,4 @@
-import "./style.css";
+import "/src/style.css";
 
 var player1selection = "";
 var player2selection = "";
@@ -12,8 +12,10 @@ if (h3Tag) h3Tag.innerText = playerTurn + "`s turn";
 const rock = document.querySelector<HTMLSpanElement>("#rock");
 const paper = document.querySelector<HTMLSpanElement>("#paper");
 const scissors = document.querySelector<HTMLSpanElement>("#scissors");
+const lizard = document.querySelector<HTMLSpanElement>("lizard");
+const spock = document.querySelector<HTMLSpanElement>("spock");
 
-console.log(rock, paper, scissors);
+console.log(rock, paper, scissors, lizard, spock);
 
 rock?.addEventListener("click", (event) => {
   if (playerTurn == "Player 1") {
@@ -42,6 +44,9 @@ paper?.addEventListener("click", (event) => {
     console.log(player2selection);
   }
   if (h3Tag) h3Tag.innerText = playerTurn + "`s turn";
+  if (player1selection && player2selection && winnerTag)
+    winnerTag.innerText =
+      "Winner: " + determineWinner(player1selection, player2selection);
 });
 scissors?.addEventListener("click", (event) => {
   if (playerTurn == "Player 1") {
@@ -50,6 +55,40 @@ scissors?.addEventListener("click", (event) => {
     console.log(player1selection);
   } else if (playerTurn == "Player 2") {
     player2selection = "scissors";
+    playerTurn = "Judge";
+    console.log(player2selection);
+  }
+  if (h3Tag) h3Tag.innerText = playerTurn + "`s turn";
+
+  if (player1selection && player2selection && winnerTag)
+    winnerTag.innerText =
+      "Winner: " + determineWinner(player1selection, player2selection);
+});
+
+lizard?.addEventListener("click", (event) => {
+  if (playerTurn == "Player 1") {
+    player1selection = "lizard";
+    playerTurn = "Player 2";
+    console.log(player1selection);
+  } else if (playerTurn == "Player 2") {
+    player2selection = "lizard";
+    playerTurn = "Judge";
+    console.log(player2selection);
+  }
+  if (h3Tag) h3Tag.innerText = playerTurn + "`s turn";
+
+  if (player1selection && player2selection && winnerTag)
+    winnerTag.innerText =
+      "Winner: " + determineWinner(player1selection, player2selection);
+});
+
+spock?.addEventListener("click", (event) => {
+  if (playerTurn == "Player 1") {
+    player1selection = "spock";
+    playerTurn = "Player 2";
+    console.log(player1selection);
+  } else if (playerTurn == "Player 2") {
+    player2selection = "spock";
     playerTurn = "Judge";
     console.log(player2selection);
   }
